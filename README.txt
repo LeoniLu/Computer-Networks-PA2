@@ -1,5 +1,4 @@
 -Leoni Lu
--jl5592
 
 Commandline:
 	$ make //would compile all the programs and generate three executable files: gbnnode, dvnode, cnnode
@@ -37,12 +36,6 @@ GBNNODE:
 
 DVNODE:
 	The routing table is printed everytime the node receives a routing table from neighbours, even though no data is updated. However, it will only resend the routing table if there is an update in the table. 
-
-CNNODE:
-	I did not finish this part because building on my existing code, I would have to greatly rewrite GBN algorithm to fit in the requirement. I used a single thread operation for gbnnode. For getting the loss rate every 1 sec for all neighbours, I would open multithread and run gbn algorithm for each neighbour and return new loss rate every 1 sec through a pipeline to cnnode. 
-	Both Distance Vector and DV algorithm cases are implemented in the cnnode.
-	cnnode would take in all commandline arguments, put the data into to linked list: neighbour, staticneighbour (neighbour would hold data for routing table; staticneighbour hold data for neighbours)
-	If gbn-algorithm is implemented, the loss rate data would be updated into staticneighbour's rate field, which indicates the loss rate to neighbour. Then the cnnode can run normal dv algorithm upon two linked lists, neighbour & staticneibour.
 
 Memory Issue:
 	a cleanEXIT function is added to the program on signal SIGTERM and SIGINT. I hope this can help deallocating the memory on exit with ctrl C.	
